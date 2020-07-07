@@ -1,0 +1,44 @@
+
+.login-form-container{
+    width:30vw;
+    background-color: white;
+    margin:0 auto;
+    border-radius: 0.3vw;
+    
+}
+
+.login-form{
+    width:25vw;
+   
+}
+
+.btn{
+    width:25vw;
+    border-radius: 0.75vw;
+}
+
+
+.navbar-nav li {
+    display: block;
+    float: right !important;
+    
+}
+
+.navbar-nav li :hover{
+    border-bottom: 3px solid green;
+    display: block;
+}
+
+nav{
+    
+}
+
+body{
+    background-color: gainsboro;
+}
+
+.logo{
+    color:lawngreen;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+}
+

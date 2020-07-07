@@ -1,0 +1,55 @@
+
+.login-form-container{
+    width:30vw;
+    background-color: white;
+    margin:0 auto;
+    border-radius: 0.3vw;
+}
+
+.login-form{
+    width:25vw;
+}
+
+.btn{
+    width:25vw;
+    border-radius: 0.55vw;
+}
+
+
+nav{
+    background-color: white;
+    
+}
+
+body{
+    background-color:aliceblue;
+}
+
+.logo{
+    color:lawngreen;
+    font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", "Arial Black", "sans-serif";
+}
+
+.quicksearchjobs{
+    margin:0px auto;
+    
+    width:45vw;
+}
+
+.formsearch{
+    width:35vw;
+    margin: 0px auto;
+}
+
+.searchbutton , .fieldselect{
+   
+}
+
+.jobsearchform{width: 30vw; display: flex;}
+
+.create-job{
+    
+    width:70vw;
+    margin:0px auto;
+    border: 1px solid black;
+}
