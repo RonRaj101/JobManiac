@@ -18,10 +18,6 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
           }
      ?>
 
-
-
-  
-
 <!doctype html>
 <html>
 <head>
@@ -35,35 +31,26 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
 <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 <style>
-    .nav-link{
-        display: block!important;
-    }    
-.nav-link:hover{
-        display: block !important;
-        border-bottom: 1px solid lawngreen;
-    }        
+     a{
+        color: green; 
+      }
+    
+     a:hover{
+        color: greenyellow;
+    }
+    
+    nav ul li{
+        padding: 0.5vw;    
+    }
+    
+    nav{
+        height: 3vh;
+    }
 </style>   
 </head>
 
 <body style="font-family: Helvetica, Arial, sans-serif;">
     <br>
-  <nav class="navbar navbar-expand-lg" style="border: 1px solid lawngreen;">
-    <ul class="navbar-nav">
-      <li class="nav-item active" style="padding-left: 16vw;">
-        <a class="nav-link" href="#" >Find Jobs</a>
-      </li>
-      <li class="nav-item active" style="padding-left: 16vw;">
-        <a class="nav-link" href="#" >Hire Job Seekers</a>
-      </li>
-      <li class="nav-item active" style="padding-left: 16vw;">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item active" style="padding-left: 16vw;">
-        <a class="nav-link" href="Login.php" >Log In</a>
-      </li>
-    </ul>
-          
-</nav>
     
     <br>
     <br>
@@ -102,6 +89,8 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
         <br>
      <input type="submit" class="btn btn-success" value="Create Account"> 
     </form>
+        <br>
+        <a class="nav-link" href="Login.php" >Log In Instead</a>    
             </center>
         <br>
     </div> 

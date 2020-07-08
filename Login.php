@@ -32,25 +32,32 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <link type="text/css" href="Style.css" rel="stylesheet"> 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+ a{
+        color: green;
+    }
+    
+    a:hover{
+        color: greenyellow;
+        
+    }
+    
+    nav ul li{
+        padding: 0.5vw;    
+    }
+    
+    nav{
+        height: 3vh;
+    }    
+</style>    
 </head>
 <body style="font-family: Helvetica, Arial, sans-serif;">
     <br>
-    <nav class="navbar navbar-expand-lg" style="border: 1px solid lawngreen;">
-    <center>    
-  <div class="collapse navbar-collapse" id="navbarNav" > 
+
      
-    <ul class="navbar-nav"  >
-      
-      <li class="nav-item active">
-        <a class="nav-link" href="SignUp.php">Sign Up</a>
-      </li>
-      
-    </ul> 
-    
-  </div>
-        </center>
-</nav>
+       
+
     <br>
     <br>
     <center>
@@ -77,6 +84,8 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
     <br>
      <input type="submit" class="btn btn-success" value="Sign In"> 
     </form>
+        <br>    
+     <a class="nav-link" href="SignUp.php">Sign Up Instead</a>        
             </center>
         <br>
     </div>    

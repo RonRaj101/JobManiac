@@ -24,7 +24,7 @@ if(isset($_POST['field'])){
 $getcompanies = "SELECT J_COMPANY FROM JOBS";
 $companynames = mysqli_query($connectionstring,$getcompanies);
 
-  /*?>error_reporting(0);<?php */
+  error_reporting(0);
 
 ?>
 <!doctype html>
@@ -63,7 +63,6 @@ $(document).ready(function() {
   const $value = $('#customRange11');
   $valueSpan.html($value.val());
   $value.on('input change', () => {
-
     $valueSpan.html($value.val());
   });
 });    
@@ -132,16 +131,17 @@ while ($fieldata = mysqli_fetch_assoc($fields)) {
     <br>
 <center>    
 <h5>Advanced Filters</h5>
+<form method="post" action="">    
 <br> 
 <h6>Job Title:</h6> 
-<input style="width: 20vw;" class="form-control" name="jobtitle">  
+<input style="width: 20vw;" class="form-control" name="jobtitle" required>  
 <br>    
-<h6>Preferred Salary: <h5 class="font-weight-bold text-success ml-2 valueSpan2"></h5></h6> 
-<input name="prefsalary" id="customRange11" style="width: 20vw; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000">
-<br>
+<h6>Preferred Salary: <h5 class="font-weight-bold text-success ml-2 valueSpan2"><h6>Rs/Month</h6></h5></h6> 
+<input name="prefsalary" id="customRange11" style="width: 20vw; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000" required>
+<br><br>
 <h6>Preferred Company:</h6>
-<select class="form-control" style="width: 20vw;">
-<option>Company Names</option>    
+<select class="form-control" style="width: 20vw;" name="c_name" required>
+<option selected disabled>Company Names</option>    
 <?php
 while($names = mysqli_fetch_assoc($companynames)){   
 ?>
@@ -151,14 +151,13 @@ while($names = mysqli_fetch_assoc($companynames)){
 ?>    
 </select>
 <br>
-<input type="button" value="Advanced Search" class="btn btn-success" style="width: 19vw;">    
+<input type="submit" value="Advanced Search" class="btn btn-success" style="width: 19vw;"> 
+</form>    
 </center>    
   <br>
     
 </div>
- <?php echo is_null($result)?>
-    
-    
+       
 <div style="display: flex; flex-wrap: wrap; width: 70vw; margin-left: 1vw; overflow-y: scroll; float: left; ">   
 <?php
 while($jobs = mysqli_fetch_assoc($result)){
