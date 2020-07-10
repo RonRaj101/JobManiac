@@ -14,17 +14,20 @@ $fields = mysqli_query($connectionstring,$getfieldquery);
 
 
 if(isset($_POST['field'])){
-        extract($_POST);
+extract($_POST);
 
-        $selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
-        $result = mysqli_query($connectionstring,$selectjobs);      
+$selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
+$result = mysqli_query($connectionstring,$selectjobs);      
 
 }
 
 $getcompanies = "SELECT J_COMPANY FROM JOBS";
 $companynames = mysqli_query($connectionstring,$getcompanies);
 
-  error_reporting(0);
+$getjobtitles = "SELECT J_TITLE FROM JOBS";
+$jobtitles = mysqli_query($connectionstring,$getjobtitles);
+
+error_reporting(0);
 
 ?>
 <!doctype html>
@@ -38,12 +41,12 @@ $companynames = mysqli_query($connectionstring,$getcompanies);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <link type="text/css" href="Style.css" rel="stylesheet">
 <style>
-    a{
+    nav a{
         color: green;
         
     }
     
-    a:hover{
+    nav a:hover{
         color: greenyellow;
         border-bottom: 2px solid lawngreen;
     }
@@ -56,7 +59,7 @@ $companynames = mysqli_query($connectionstring,$getcompanies);
         height: 3vh;
     }
 </style>    
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+ 
 <script>
 $(document).ready(function() {
   const $valueSpan = $('.valueSpan2');
@@ -96,17 +99,17 @@ $(document).ready(function() {
   </div>
 </nav>
 
-<br><br>
-<div class="quicksearchjobs" style="float: left; margin-left: -3.75vw;">
+<br>
+<div class="quicksearchjobs container" style="float:left; width: 400px;">
 <br>
 
-<form action="" method="post" class="formsearch"  >
+<form action="" method="post" class="formsearch">
     
 <h4><strong><?php echo $user?></strong> is Looking For a Job in </h4> 
 <div class="jobsearchform">    
 <div class="fieldselect">
 
-<select name="field" class="form-control" style="width: 25vw;"> 
+<select name="field" class="form-control" style="width:400px;"> 
 <?php
 while ($fieldata = mysqli_fetch_assoc($fields)) {			 
 ?>        
@@ -118,29 +121,44 @@ while ($fieldata = mysqli_fetch_assoc($fields)) {
 
 </div>
 <div class="searchbutton">    
-<input type="submit" class="btn btn-success" value="Search" style="width:10vw; margin-left: 1vw;"> 
+<input type="submit" class="btn btn-success" value="Search" style="width:100px; margin-left: 1vw;"> 
 </div>
 </div>    
 </form> 
 
-    <br>
+ <br>
 </div>
-<br><br>  
-    
-<div class="filters" style="float: right; background-color: aliceblue; width: 23vw; margin-right: 3vw; border-radius: 0.4vw; border: 2px solid black;">
+<br><br><br>  
+<?php 
+if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c_name'])){
+    extract($_POST);
+    $selectjobs = "SELECT * FROM jobs WHERE J_TITLE = '$jobtitle' AND J_SALARY <= $prefsalary AND J_COMPANY = '$c_name'";
+    $result = mysqli_query($connectionstring,$selectjobs);      
+ 
+}    
+?>    
+<div class="filters container" style="float: right; background-color: aliceblue; width: 375px; margin-right: 3vw; border-radius: 0.4vw; border: 2px solid black;">
     <br>
 <center>    
 <h5>Advanced Filters</h5>
 <form method="post" action="">    
 <br> 
 <h6>Job Title:</h6> 
-<input style="width: 20vw;" class="form-control" name="jobtitle" required>  
+<select name="jobtitle" class="form-control" style="width: 250px;">
+<?php
+while($titles = mysqli_fetch_assoc($jobtitles)){
+?> 
+<option><?php echo $titles["J_TITLE"]?></option>    
+<?php    
+}    
+?>  
+</select>  
 <br>    
 <h6>Preferred Salary: <h5 class="font-weight-bold text-success ml-2 valueSpan2"><h6>Rs/Month</h6></h5></h6> 
-<input name="prefsalary" id="customRange11" style="width: 20vw; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000" required>
+<input name="prefsalary" id="customRange11" style="width: 250px; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000" required>
 <br><br>
 <h6>Preferred Company:</h6>
-<select class="form-control" style="width: 20vw;" name="c_name" required>
+<select class="form-control" style="width: 250px;" name="c_name" required>
 <option selected disabled>Company Names</option>    
 <?php
 while($names = mysqli_fetch_assoc($companynames)){   
@@ -151,19 +169,26 @@ while($names = mysqli_fetch_assoc($companynames)){
 ?>    
 </select>
 <br>
-<input type="submit" value="Advanced Search" class="btn btn-success" style="width: 19vw;"> 
+<input type="submit" value="Advanced Search" class="btn btn-success" style="width: 230px;"> 
 </form>    
 </center>    
   <br>
     
 </div>
        
-<div style="display: flex; flex-wrap: wrap; width: 70vw; margin-left: 1vw; overflow-y: scroll; float: left; ">   
+<div style="display: flex; flex-wrap: wrap; width: 50vw; float: left; padding-left: 0.75vw;">   
 <?php
+
+  
 while($jobs = mysqli_fetch_assoc($result)){
+if($result == null){
+    echo("NO RESULTS FOUND");
+} 
+else{      
 ?>     
-<div class="jobsearchresults" style="width:20vw; border:0.15vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 0.75vw; word-break: break-all; box-sizing: content-box;">
-<div>     
+<div class="jobsearchresults" style="width:40vw; border:0.15vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 10px; word-break: break-all; box-sizing: content-box;">
+<div>
+    <img style="float: right;" src="save.png" width="32px" height="32px" title="Save Job">
     <h6 hidden=""><?php echo $jobs['J_ID']?></h6>    
     <h4><strong><?php echo $jobs['J_TITLE']?></strong></h4>
     <hr>
@@ -184,11 +209,12 @@ while($jobs = mysqli_fetch_assoc($result)){
     <a href="ApplyJob.php?J_ID=<?php echo $jobs['J_ID']?>"><input type="button" class="btn btn-success" value="Apply For Job" style="width: 12vw;"></a>
     <br>
 </div>     
-
 </div>
 <?php
     }
-?>
-</div>    
+    }
+?> 
+</div> 
+    
 </body>
 </html>

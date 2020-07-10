@@ -53,12 +53,13 @@ $rows = mysqli_num_rows($unseen);
 <style>
      a{
         color: green;
-    
+        text-decoration: none;
     }
     
     a:hover{
         color: greenyellow;
         border-bottom: 2px solid lawngreen;
+        text-decoration: none;
     }
     
     nav ul li{
@@ -67,7 +68,11 @@ $rows = mysqli_num_rows($unseen);
     }
     
     nav{
-        height: 5vh;
+        height: 10px;
+    }
+    
+    nav ul li{
+        padding-left:5vw;
     }
 </style>    
 </head>
@@ -79,58 +84,58 @@ $rows = mysqli_num_rows($unseen);
     </center> 
     <br>
     
-<nav class="navbar navbar-expand-lg" style="border: 1px solid aliceblue; background-color: aliceblue;">
-    <ul class="navbar-nav">
-      <li class="nav-item" style="margin-left: 14vw;">
-        <a class="nav-link" href="EmployerListings.php">Your Job Listings
+<nav class="navbar navbar-collapse" style="border: 1px solid aliceblue; background-color: aliceblue; list-style: none;  width:90vw; margin: 0px auto; ">
+    <ul class="row" style="list-style: none; width: 80vw; margin-left:10vw;" >
+      <li class="col" style="width: 250px;">
+        <a class="" href="EmployerListings.php">Your Job Listings
           <span class="badge badge-danger"><?php echo $rows;?></span>
-          </a>
+        </a>
+        <br>  
       </li>
-      <li class="nav-item" style="margin-left: 16vw;">
-        <a class="nav-link"   href="#">About</a>
+      <li class="col" style="">
+        <a class="" href="#">About</a>
       </li>
-      <li class="nav-item" style="margin-left: 16vw;">
-        <a class="nav-link"  href="Profile.php">Profile Information</a>
+      <li class="col" style="">
+        <a class=""  href="Profile.php">Profile Information</a>
       </li>
-       <li class="nav-item" style="margin-left: 16vw;">
-        <a class="nav-link"  href="LogOut.php">Log Out</a>
+       <li class="col" style="">
+        <a class=""  href="LogOut.php">Log Out</a>
       </li>    
-    </ul>  
+    </ul>
+    
 </nav>
 
 <br>
 <br>
 <br>
-
-
  <center>   
-<h5>Welcome <strong><?php echo $_SESSION['user']?></strong></h5>
+<h5>Welcome, <strong><?php echo $_SESSION['user']?></strong></h5>
  </center>     
 <br>
-    <div class="create-job" style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px; ">
+    <div class="create-job container" style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px; width:70vw; margin:0px auto;">
         <br>
     <center>    
     <h3>Create Job Listing</h3> 
     <hr>    
  </center> 
         
-    <div class="joblistform" style="margin-left: 1vw; width: 65vw; margin: 0px auto; ">
+    
     <form method="post" action="">    
        <br> 
-    <input type="text" class="form-control" style="width:18vw;" name="title" placeholder="Job Title" required>
+    <input type="text" class="form-control" style="width:150px;" name="title" placeholder="Job Title" required>
   <br>
-    <textarea cols="10vh" rows="4vh" class="form-control" placeholder="Job Description" name="desc" required></textarea>
+    <textarea style="width: 350px;" cols="100" rows="4" class="form-control form-text" placeholder="Job Description" name="desc" required></textarea>
     <br>
-    <input type="number" class="form-control" style="width:15vw;" name="salary" placeholder="Salary(Rs Per Month)" required>   
+    <input type="number" class="form-control" style="width:250px;" name="salary" placeholder="Salary(Rs Per Month)" required>   
 <br>
-    <select class="form-control" style="width: 15vw;" name="type" required>
+    <select class="form-control" style="width: 250px;" name="type" required>
         <option selected disabled>Job Type</option>
         <option>Full-Time</option>
         <option>Part-Time</option> 
         <option>Contract</option>
     </select> 
         <br>
-<select name="field" class="form-control" style="width: 25vw;"> 
+<select name="field" class="form-control" style="width: 250px;"> 
      <option selected disabled>Field of Job</option>
      <?php
      while ($fieldata = mysqli_fetch_assoc($fields)) {			 
@@ -141,22 +146,16 @@ $rows = mysqli_num_rows($unseen);
      ?>        
 </select>
     <br>    
-    <input type="text" class="form-control" style="width:18vw;" name="org" placeholder="Organization">
+    <input type="text" class="form-control" style="width:300px;" name="org" placeholder="Organization">
         <hr>
-    <input type="submit" class="btn btn-success" style="width: 15vw; float: right;" value="Create Job Listing">
-        <br>
-        <br>
-    </form>    
-    </div>
-        
-    </div>
+    <input type="submit" class="btn btn-success" style="width:200px;" value="Create Job Listing">
+    </form> 
+    <br>    
+    </div>  
     
     <br>
     <br>
-<div class="searchresults">
 
-   
-</div>    
     
 </body>
 </html>

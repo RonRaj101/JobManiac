@@ -75,12 +75,12 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
         <hr>
      <h6 style="float: left;">Email Address</h6> 
         <center> 
-     <input type="email" class="form-control" name="email" required>
+     <input type="email" class="form-control" style="width:25vw;" name="email" required>
         </center> 
         <br>
       
      <h6 style="float: left;">Password</h6>        
-     <input type="password" class="form-control" name="pass" required >
+     <input type="password" class="form-control" style="width:25vw;" name="pass" required >
     <br>
      <input type="submit" class="btn btn-success" value="Sign In"> 
     </form>

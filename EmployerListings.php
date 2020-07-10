@@ -100,11 +100,11 @@ $count = mysqli_num_rows($countexec);
     <h5>Salary: <strong><?php echo $row['J_SALARY']?> PKR</strong></h4>
     <h6>Job Type: <strong><?php echo $row['J_TYPE']?></strong></h5>
     <h6>Field of Work: <strong><?php echo $fieldname?></strong></h5>    
-     
     <a href="DelJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-danger" value="Remove Job Listing" style="width: 10vw;"></a>
-    <a><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>
+    <a href="#EditJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>
     </div>   
-    </div>   
+    </div>
+
     <?php      
     }
     ?>
