@@ -76,7 +76,7 @@ $count = mysqli_num_rows($countexec);
 <h6><strong><u><?php echo $count ?></strong></u> Job Listings </h6>
 </center>    
 <br>
-    <div style="display: flex; flex-wrap: wrap; width: 80vw; margin-left: 10vw;">
+    <div style="display:flex; flex-wrap:wrap; width: 100vw; box-sizing:border-box; margin-left: 2vw;">
 <?php
     $getlistingsquery = "SELECT * FROM jobs WHERE J_CREATOR = '$id' ";
     $list = mysqli_query($connectionstring,$getlistingsquery);
@@ -91,24 +91,24 @@ $count = mysqli_num_rows($countexec);
           
       ?>
     
-    <div style=" width: 25vw; border:1px solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 0.75vw; word-break: break-all; box-sizing: content-box;">   
-    <div style="">     
+    <div style=" width: 30vw; border:1px solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 0.75vw; box-sizing:content-box;">   
+      
     <h6 hidden=""><?php echo $row['J_ID']?></h6>    
     <h4>Job Title: <strong><?php echo $row['J_TITLE']?></strong></h4>
     <h6>Company Name: <strong><?php echo $row['J_COMPANY']?></strong></h4>    
     <h6>Job Description:<i><?php echo $row['J_DESC']?></i></h6> 
-    <h5>Salary: <strong><?php echo $row['J_SALARY']?> PKR</strong></h4>
+    <h5>Salary: <strong><?php echo $row['J_SALARY']?> PKR</strong> / Month</h4>
     <h6>Job Type: <strong><?php echo $row['J_TYPE']?></strong></h5>
-    <h6>Field of Work: <strong><?php echo $fieldname?></strong></h5>    
+    <h6>Field of Work: <strong><?php echo $fieldname?></strong></h5>   
+    <hr>
     <a href="DelJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-danger" value="Remove Job Listing" style="width: 10vw;"></a>
-    <a href="#EditJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>
-    </div>   
+    <a href="#EditJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>    
     </div>
 
     <?php      
     }
     ?>
    </div>
- <br><br>
+ 
 </body>
 </html>

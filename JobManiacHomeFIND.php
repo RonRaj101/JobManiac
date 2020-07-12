@@ -4,6 +4,13 @@ session_start();
 
 $user = $_SESSION['user'];
 
+$userid = "SELECT ID FROM userprofiles WHERE Name = '$user'";
+$useridget = mysqli_query($connectionstring,$userid);
+
+while($id = mysqli_fetch_assoc($useridget)){
+    $u_id = $id['ID'];
+}
+
 if($user == null){
     header("location:Login.php");
 }
@@ -84,6 +91,7 @@ $(document).ready(function() {
     <ul class="navbar-nav">
       <li class="nav-item active" style="margin-left: 15vw;">
         <a class="nav-link" href="#">Saved Job's</a>
+        <span class="badge badge-danger"><?php echo $rows;?></span>  
       </li>
       <li class="nav-item active" style="margin-left: 15vw;">
         <a class="nav-link" href="#">About</a>
@@ -154,12 +162,13 @@ while($titles = mysqli_fetch_assoc($jobtitles)){
 ?>  
 </select>  
 <br>    
-<h6>Preferred Salary: <h5 class="font-weight-bold text-success ml-2 valueSpan2"><h6>Rs/Month</h6></h5></h6> 
+<h6>Preferred Salary(Upto) :  <h5 class="font-weight-bold text-success ml-2 valueSpan2">Upto<h6>Rs/Month</h6></h5></h6> 
 <input name="prefsalary" id="customRange11" style="width: 250px; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000" required>
 <br><br>
 <h6>Preferred Company:</h6>
 <select class="form-control" style="width: 250px;" name="c_name" required>
-<option selected disabled>Company Names</option>    
+<option selected disabled>Company Names</option>
+<option value="">Any</option>    
 <?php
 while($names = mysqli_fetch_assoc($companynames)){   
 ?>
@@ -188,7 +197,13 @@ else{
 ?>     
 <div class="jobsearchresults" style="width:40vw; border:0.15vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 10px; word-break: break-all; box-sizing: content-box;">
 <div>
-    <img style="float: right;" src="save.png" width="32px" height="32px" title="Save Job">
+    <?php
+    
+    ?>
+    <a href="SaveJob.php? J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id?>"><img style="float: right;" title="Save Job" src="save.png" width="32px" height="32px"></a>
+    <?php
+        
+    ?>    
     <h6 hidden=""><?php echo $jobs['J_ID']?></h6>    
     <h4><strong><?php echo $jobs['J_TITLE']?></strong></h4>
     <hr>
