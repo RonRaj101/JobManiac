@@ -49,7 +49,7 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
 </style>   
 </head>
 
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
     <br>
     
     <br>

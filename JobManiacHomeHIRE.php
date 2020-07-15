@@ -33,10 +33,12 @@ if(isset($_POST['title']) and isset($_POST['desc']) and isset($_POST['salary']) 
 $getunseenjobs = "SELECT * FROM jobs WHERE J_CREATOR = '$id' AND Seen = 0 ";
 $unseen = mysqli_query($connectionstring,$getunseenjobs);
 
-$rows = mysqli_num_rows($unseen);
+$rowsunread = mysqli_num_rows($unseen);
 
+$gettotaljobs = "SELECT * FROM jobs WHERE J_CREATOR = '$id'";
+$total = mysqli_query($connectionstring,$gettotaljobs);
 
-
+$rowstotal = mysqli_num_rows($total);
 
 ?>
 <!doctype html>
@@ -77,7 +79,7 @@ $rows = mysqli_num_rows($unseen);
 </style>    
 </head>
 
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
     <br>
      <center>
     <h1 class="logo"><ins>JOB MANIAC</ins></h1>
@@ -85,10 +87,11 @@ $rows = mysqli_num_rows($unseen);
     <br>
     
 <nav class="navbar navbar-collapse" style="border: 1px solid aliceblue; background-color: aliceblue; list-style: none;  width:90vw; margin: 0px auto; ">
-    <ul class="row" style="list-style: none; width: 80vw; margin-left:10vw;" >
+    <ul class="row" style="list-style: none; width: 90vw; margin-left:10vw;" >
       <li class="col" style="width: 250px;">
         <a class="" href="EmployerListings.php">Your Job Listings
-          <span class="badge badge-danger"><?php echo $rows;?></span>
+          <span class="badge badge-info"><?php echo $rowstotal;?></span>    
+          <span class="badge badge-danger"><?php echo $rowsunread;?></span>
         </a>
         <br>  
       </li>
@@ -107,7 +110,7 @@ $rows = mysqli_num_rows($unseen);
 
 <br>
 <br>
-<br>
+<hr>    
  <center>   
 <h5>Welcome, <strong><?php echo $_SESSION['user']?></strong></h5>
  </center>     

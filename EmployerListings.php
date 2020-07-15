@@ -21,7 +21,10 @@ $count = mysqli_num_rows($countexec);
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <link type="text/css" href="Style.css" rel="stylesheet">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+document.getElementById('#myModal').style.display = 'block';
+</script>   
+
 <style>
       a{
         color: green;
@@ -42,10 +45,14 @@ $count = mysqli_num_rows($countexec);
         height: 5vh;
         background-color: aliceblue;
     } 
+    
+    *{
+        box-sizing: border-box;
+    }
 </style>    
 </head>
 
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
       <br>
      <center>
     <h1 class="logo"><ins>JOB MANIAC</ins></h1>
@@ -55,7 +62,7 @@ $count = mysqli_num_rows($countexec);
   <div class="collapse navbar-collapse" id="navbarNav">
       <center>
     <ul class="navbar-nav">
-      <li class="nav-item active" style="padding-left: 16vw;">
+      <li class="nav-item active" style="padding-left: 11vw;">
         <a class="nav-link" href="JobManiacHomeHIRE.php">Create Job Listing</a>
       </li>
       <li class="nav-item active" style="padding-left: 16vw;">
@@ -71,28 +78,29 @@ $count = mysqli_num_rows($countexec);
         </center>  
   </div>
 </nav>
+<hr>    
 <br>
 <center>    
 <h6><strong><u><?php echo $count ?></strong></u> Job Listings </h6>
 </center>    
 <br>
-    <div style="display:flex; flex-wrap:wrap; width: 100vw; box-sizing:border-box; margin-left: 2vw;">
+    <div style=" flex-wrap: wrap; width: 90vw; box-sizing:border-box; margin-left: 3vw; ">
 <?php
     $getlistingsquery = "SELECT * FROM jobs WHERE J_CREATOR = '$id' ";
     $list = mysqli_query($connectionstring,$getlistingsquery);
     
-    while($row = mysqli_fetch_assoc($list)){
+    if(mysqli_num_rows($list) > 0){
+        while($row = mysqli_fetch_assoc($list)){
         $FNUM = $row['J_FIELD'];
         $fieldnamequery = "SELECT F_NAME FROM fields where F_ID = '$FNUM'";
         $fieldnameget = mysqli_query($connectionstring,$fieldnamequery);
         while($get = mysqli_fetch_assoc($fieldnameget)){
-            $fieldname = $get['F_NAME'];
+         $fieldname = $get['F_NAME'];
         }
-          
+         
       ?>
     
-    <div style=" width: 30vw; border:1px solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 0.75vw; box-sizing:content-box;">   
-      
+    <div style=" width:75vw; border:1px solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.3vw; padding: 0.75vw; margin: 0px auto;">   
     <h6 hidden=""><?php echo $row['J_ID']?></h6>    
     <h4>Job Title: <strong><?php echo $row['J_TITLE']?></strong></h4>
     <h6>Company Name: <strong><?php echo $row['J_COMPANY']?></strong></h4>    
@@ -102,12 +110,38 @@ $count = mysqli_num_rows($countexec);
     <h6>Field of Work: <strong><?php echo $fieldname?></strong></h5>   
     <hr>
     <a href="DelJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-danger" value="Remove Job Listing" style="width: 10vw;"></a>
-    <a href="#EditJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>    
+    <a href="EmployerListings.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>    
+    </div>
+    <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
     </div>
 
+  </div>
+</div>
+    <br>     
     <?php      
     }
+    }
+    
+    else{
     ?>
+        <center>No Jobs Posted</center>
+    <?php
+       }  
+    ?>    
    </div>
  
 </body>

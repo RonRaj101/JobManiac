@@ -49,14 +49,12 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
     
     nav{
         height: 3vh;
-    }    
+    } 
+    
 </style>    
 </head>
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
     <br>
-
-     
-       
 
     <br>
     <br>

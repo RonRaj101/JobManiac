@@ -20,13 +20,7 @@ $fields = mysqli_query($connectionstring,$getfieldquery);
 
 
 
-if(isset($_POST['field'])){
-extract($_POST);
 
-$selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
-$result = mysqli_query($connectionstring,$selectjobs);      
-
-}
 
 $getcompanies = "SELECT J_COMPANY FROM JOBS";
 $companynames = mysqli_query($connectionstring,$getcompanies);
@@ -36,6 +30,11 @@ $jobtitles = mysqli_query($connectionstring,$getjobtitles);
 
 error_reporting(0);
 
+$saved = $_GET['saved'];
+$unsaved = $_GET['unsaved'];
+
+unset($_GET['saved']);
+unset($_GET['unsaved']);
 ?>
 <!doctype html>
 <html>
@@ -79,7 +78,28 @@ $(document).ready(function() {
 </script>    
 </head>
 
-<body style="font-family: Helvetica, Arial, sans-serif;">
+<body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
+    
+    <?php
+    if($saved == 1){ 
+    $saved = 0;    
+    ?>
+    <div class="alert alert-info alert-dismissible">
+    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <center><strong>Job Saved Succesfully</strong></center>
+    </div>
+    <?php     
+    }
+    elseif($unsaved == 1){ 
+    $unsaved = 0;    
+    ?>
+    <div class="alert alert-info alert-dismissible">
+    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <center><strong>Job Un-Saved Succesfully</strong></center>
+    </div>
+    <?php      
+     }
+    ?>
     <br>
      <center>
     <h1 class="logo"><ins>JOB MANIAC</ins></h1>
@@ -110,7 +130,16 @@ $(document).ready(function() {
 <br>
 <div class="quicksearchjobs container" style="float:left; width: 400px;">
 <br>
+<?php
+if(isset($_POST['field'])){
+extract($_POST);
 
+$selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
+$result = mysqli_query($connectionstring,$selectjobs);      
+
+}  
+?> 
+   
 <form action="" method="post" class="formsearch">
     
 <h4><strong><?php echo $user?></strong> is Looking For a Job in </h4> 
@@ -163,7 +192,7 @@ while($titles = mysqli_fetch_assoc($jobtitles)){
 </select>  
 <br>    
 <h6>Preferred Salary(Upto) :  <h5 class="font-weight-bold text-success ml-2 valueSpan2">Upto<h6>Rs/Month</h6></h5></h6> 
-<input name="prefsalary" id="customRange11" style="width: 250px; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="100000" step="5000" required>
+<input name="prefsalary" id="customRange11" style="width: 250px; background: #07FF5A"; type="range" class="form-control-range" min="5000" max="250000" step="5000" required>
 <br><br>
 <h6>Preferred Company:</h6>
 <select class="form-control" style="width: 250px;" name="c_name" required>
@@ -188,22 +217,30 @@ while($names = mysqli_fetch_assoc($companynames)){
 <div style="display: flex; flex-wrap: wrap; width: 50vw; float: left; padding-left: 0.75vw;">   
 <?php
 
-  
+if(mysqli_num_rows($result) > 0){  
+    
 while($jobs = mysqli_fetch_assoc($result)){
-if($result == null){
-    echo("NO RESULTS FOUND");
-} 
-else{      
-?>     
+$j_id = $jobs['J_ID']; 
+    
+$checksavedquery = "SELECT S_ID FROM savedjobs WHERE J_ID = '$j_id' AND U_ID = '$u_id'";
+$checksaved = mysqli_query($connectionstring,$checksavedquery);
+
+
+?>
 <div class="jobsearchresults" style="width:40vw; border:0.15vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 10px; word-break: break-all; box-sizing: content-box;">
 <div>
     <?php
-    
+    if(mysqli_num_rows($checksaved) > 0){
     ?>
-    <a href="SaveJob.php? J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id?>"><img style="float: right;" title="Save Job" src="save.png" width="32px" height="32px"></a>
+    <a style="float: right;" href="Unsave.php?J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id ?>"><h5>Unsave</h5></a>
     <?php
-        
-    ?>    
+    }    
+    else{ 
+    ?>
+    <a href="SaveJob.php?J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id?>"><img style="float: right;" src="save.png" width="32px" height="32px"></a>
+    <?php
+    }
+    ?>
     <h6 hidden=""><?php echo $jobs['J_ID']?></h6>    
     <h4><strong><?php echo $jobs['J_TITLE']?></strong></h4>
     <hr>
@@ -221,12 +258,16 @@ else{
     ?>
     <h6><strong><span class="badge-light"><?php echo $fieldname?></span></strong></h6>
     <hr>
-    <a href="ApplyJob.php?J_ID=<?php echo $jobs['J_ID']?>"><input type="button" class="btn btn-success" value="Apply For Job" style="width: 12vw;"></a>
+    <a href="MoreInfo.php?J_ID=<?php echo $jobs['J_ID']?>"><input type="button" class="btn btn-info" value="More Info" style="width: 12vw;"></a>
     <br>
 </div>     
 </div>
 <?php
     }
+    }
+    else{
+        
+        echo "No Results Found";
     }
 ?> 
 </div> 
