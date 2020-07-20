@@ -47,11 +47,13 @@ $rowstotal = mysqli_num_rows($total);
 <meta charset="utf-8">
 <title>JOB MANIAC</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <link type="text/css" href="Style.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<script>
+var t = document.getElementsByName('type');
+  
+if()    
+</script>    
 <style>
      a{
         color: green;
@@ -123,19 +125,28 @@ $rowstotal = mysqli_num_rows($total);
  </center> 
         
     
+        
     <form method="post" action="">    
        <br> 
     <input type="text" class="form-control" style="width:150px;" name="title" placeholder="Job Title" required>
   <br>
     <textarea style="width: 350px;" cols="100" rows="4" class="form-control form-text" placeholder="Job Description" name="desc" required></textarea>
     <br>
-    <input type="number" class="form-control" style="width:250px;" name="salary" placeholder="Salary(Rs Per Month)" required>   
+    <input type="number" class="form-control" id="paisa" style="width:250px;" name="salary" placeholder="" required>   
 <br>
-    <select class="form-control" style="width: 250px;" name="type" required>
+    <?php
+    $getjobtypequery = "SELECT * FROM jobtype";
+    $getjobtype = mysqli_query($connectionstring,$getjobtypequery);
+    ?>    
+    <select id="jtype" class="form-control" style="width: 250px;" name="type" required>
         <option selected disabled>Job Type</option>
-        <option>Full-Time</option>
-        <option>Part-Time</option> 
-        <option>Contract</option>
+         <?php
+         while($types = mysqli_fetch_assoc($getjobtype)){
+         ?>    
+        <option value="<?php echo $types['T_ID']?>"><?php echo $types['T_NAME']?></option>
+         <?php
+         }
+         ?>    
     </select> 
         <br>
 <select name="field" class="form-control" style="width: 250px;"> 

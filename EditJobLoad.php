@@ -16,9 +16,6 @@ $user_id = $id;
     
 header('location:EmployerListings.php?J_ID=$job_id');   
 ?>
-<script>
-document.getElementById('#myModal').style.display = 'block';
-</script>   
 
 </body>
 </html>

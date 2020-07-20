@@ -93,7 +93,8 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
         <a class="nav-link" href="Login.php" >Log In Instead</a>    
             </center>
         <br>
-    </div> 
+    </div>
+    <button id="btn">HIDE</button>
     <br>
     
 </body>
