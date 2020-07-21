@@ -104,10 +104,10 @@ $(document).ready(function() {
 <br>
 
 <br>    
-<div class="quicksearchjobs container" style="float:left; width: 400px;">
+<div class="quicksearchjobs container" style="margin: 0px auto;">
 <br>
    
-<form action="" method="post" class="formsearch" style="">
+<form action="" method="post" class="formsearch" style="width: 500px;">
     
 <h4><strong><?php echo $user?></strong> is Looking For a Job in </h4> 
 <div class="jobsearchform">    
@@ -125,12 +125,19 @@ while ($fieldata = mysqli_fetch_assoc($fields)) {
 
 </div>
 <div class="searchbutton">    
-<input type="submit" class="btn btn-success" value="Search" style="width:100px; margin-left: 1vw;"> 
+<input type="submit" class="btn btn-outline-success" value="Search" style="width:100px; margin-left: 1vw;"> 
 </div>
 </div>    
 </form> 
-
  <br>
 </div>
+<br>    
+<div style="width: 500px; height: 700px; border-radius: 0.3vw; margin-left: 1vw; background-color:white;">
+<br>    
+<center>    
+<h5>Featured Jobs</h5>
+</center>
+<hr>    
+</div>    
 </body>
 </html>

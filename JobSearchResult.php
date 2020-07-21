@@ -4,7 +4,7 @@ include("DBCONNECT.php");
 $field = $_GET['field'];
 $u_id = $_GET['user'];
 
-session_start();
+
 
 $selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
 $result = mysqli_query($connectionstring,$selectjobs);      
@@ -25,6 +25,9 @@ error_reporting(0);
 <meta charset="utf-8">
 <title>Job Search Result</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    
 <link type="text/css" href="Style.css" rel="stylesheet"> 
 <style>
     nav a{
@@ -49,7 +52,7 @@ error_reporting(0);
      
 </head>
 
-<body>
+<body style="padding: 1vw;">
 <?php
     if($_GET['saved'] == 1){ 
     $_GET['unsaved'] = 0;    
@@ -80,17 +83,21 @@ error_reporting(0);
   <div class="collapse navbar-collapse" id="navbarNav">
       <center>
     <ul class="navbar-nav">
-      <li class="nav-item active" style="margin-left: 15vw;">
+       <li class="nav-item active" style="margin-left: 10vw;">
+        <a class="nav-link" href="JobManiacHomeFIND.php">Home Page</a>
+        <span class="badge badge-danger"><?php?></span>  
+      </li>    
+      <li class="nav-item active" style="margin-left: 11vw;">
         <a class="nav-link" href="#">Saved Job's</a>
         <span class="badge badge-danger"><?php?></span>  
       </li>
-      <li class="nav-item active" style="margin-left: 15vw;">
+      <li class="nav-item active" style="margin-left: 11vw;">
         <a class="nav-link" href="#">About</a>
       </li>
-      <li class="nav-item active" style="margin-left: 15vw;">
+      <li class="nav-item active" style="margin-left: 11vw;">
         <a class="nav-link" href="Profile.php">Profile Information</a>
       </li>
-      <li class="nav-item active" style="margin-left: 15vw;">
+      <li class="nav-item active" style="margin-left: 10vw;">
         <a class="nav-link" href="LogOut.php">Log Out</a>
       </li>    
     </ul>
@@ -106,11 +113,13 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
  
 }    
 ?>
+<br>    
+<div style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px; width: 1000px; margin:0px auto;">    
 <br>
     <center><h4>Advanced Job Search</h4></center>
     
 <br>    
-<form class="form-inline" style="margin:0px auto; border: 1px solid aliceblue; width:950px; ">
+<form method="post" action="" class="form-inline" style=" margin: 0px auto; border: 1px solid aliceblue; width:950px; ">
   <div class="form-group mb-2">
     <label for="jobtitle" class="sr-only">Job Title</label>
     <select name="jobtitle" class="form-control" style="width: 250px;">
@@ -142,13 +151,12 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
     </select>
   </div> 
 <center>    
-  <button style="width: 10vw; margin-left: 1vw; " type="submit" class="btn btn-success mb-2">Advanced Search</button>
+  <input style="width: 10vw; margin-left: 1vw; " type="submit" class="btn btn-success mb-2" value="Advanced Search">
 </center>    
-</form> 
-    
+</form>    
 <br>
-
-
+</div>
+<br>
 <br>   
 <div style="display: flex; flex-wrap: wrap; width: 50vw; float: left; padding-left: 0.75vw; margin: 0px auto;"> 
 
@@ -165,7 +173,7 @@ $checksaved = mysqli_query($connectionstring,$checksavedquery);
 
 ?>
     
-<div class="jobsearchresults" style="width:30vw; border:0.15vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 10px; word-break: break-all; box-sizing: content-box;">
+<div class="jobsearchresults" style="width:30vw; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
 <div>
     <?php
     if(mysqli_num_rows($checksaved) > 0){
@@ -204,11 +212,11 @@ $checksaved = mysqli_query($connectionstring,$checksavedquery);
     ?>
     <h6><strong><span class="badge-light"><?php echo $fieldname?></span></strong></h6>
     <hr>
-    <a href="MoreInfo.php?J_ID=<?php echo $jobs['J_ID']?>"><input type="button" class="btn btn-info" value="More Info" style="width: 12vw;"></a>
+    <a href="MoreInfoJobs.php?J_ID=<?php echo $jobs['J_ID']?> & user=<?php echo $u_id?> & field=<?php echo $jobs['J_FIELD']?>"><input type="button" class="btn btn-info" value="More Info" style="width: 12vw;"></a>
     <br>
 </div>     
 
-    
+</div>    
 <?php
     }
     }
@@ -217,7 +225,7 @@ $checksaved = mysqli_query($connectionstring,$checksavedquery);
         echo "No Results Found";
     }
 ?> 
-</div>
+
 </div>    
         
 </body>
