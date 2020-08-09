@@ -1,22 +1,15 @@
 <?php
 include("DBCONNECT.php");
-
-$field = $_GET['field'];
-$u_id = $_GET['user'];
-
-
-
-$selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$field'";
-$result = mysqli_query($connectionstring,$selectjobs);      
-
-$getcompanies = "SELECT J_COMPANY FROM JOBS";
-$companynames = mysqli_query($connectionstring,$getcompanies);
-
-$getjobtitles = "SELECT J_TITLE FROM JOBS";
-$jobtitles = mysqli_query($connectionstring,$getjobtitles);
-
-
 error_reporting(0);
+$getallcompanynamessql = "SELECT J_COMPANY FROM jobs WHERE Active = 1";
+$companynames = mysqli_query($connectionstring,$getallcompanynamessql);
+
+$getfieldssql = "SELECT * FROM fields";
+$getfields = mysqli_query($connectionstring,$getfieldssql);
+
+$u_id = $_GET['ID'];
+
+
 ?> 
 
 <!doctype html>
@@ -27,28 +20,39 @@ error_reporting(0);
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    
-<link type="text/css" href="Style.css" rel="stylesheet"> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">     
+<link type="text/css" href="Style.css" rel="stylesheet">
 <style>
-    nav a{
+     .logo{
+        font-family: 'Lobster', cursive;
+    }
+     a{
         color: green;
-        
+        text-decoration: none;
     }
     
-    nav a:hover{
+    a:hover{
         color: greenyellow;
         border-bottom: 2px solid lawngreen;
+        text-decoration: none;
     }
     
     nav ul li{
-        padding: 0.5vw;    
+        padding: 0.5vw;
+        
     }
     
     nav{
-        height: 3vh;
+        height: 10px;
     }
-
-</style>    
+    
+     #profileimg{
+        border-radius: 01vw;
+    }
+    
+  
+</style>   
      
 </head>
 
@@ -75,40 +79,15 @@ error_reporting(0);
     ?>     
 <br>   
     <center>
-    <h1 class="logo"><ins>JOB MANIAC</ins></h1>
+    <a href="JobManiacHomeFIND.php"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
     </center> 
 <br>    
  
-<nav class="navbar navbar-expand-lg" style="border: 1px solid aliceblue; border-radius: 1vw; background-color: aliceblue; ">
-  <div class="collapse navbar-collapse" id="navbarNav">
-      <center>
-    <ul class="navbar-nav">
-       <li class="nav-item active" style="margin-left: 10vw;">
-        <a class="nav-link" href="JobManiacHomeFIND.php">Home Page</a>
-        <span class="badge badge-danger"><?php?></span>  
-      </li>    
-      <li class="nav-item active" style="margin-left: 11vw;">
-        <a class="nav-link" href="#">Saved Job's</a>
-        <span class="badge badge-danger"><?php?></span>  
-      </li>
-      <li class="nav-item active" style="margin-left: 11vw;">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class="nav-item active" style="margin-left: 11vw;">
-        <a class="nav-link" href="Profile.php">Profile Information</a>
-      </li>
-      <li class="nav-item active" style="margin-left: 10vw;">
-        <a class="nav-link" href="LogOut.php">Log Out</a>
-      </li>    
-    </ul>
-        </center>  
-  </div>
-</nav>
-  <br>  
 <?php 
 if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c_name'])){
     extract($_POST);
-    $selectjobs = "SELECT * FROM jobs WHERE J_TITLE = '$jobtitle' AND J_SALARY <= $prefsalary AND J_COMPANY = '$c_name'";
+    $field = $jobtitle; 
+    $selectjobs = "SELECT * FROM jobs WHERE J_FIELD = '$jobtitle' AND J_SALARY <= $prefsalary AND J_COMPANY = '$c_name' AND Active = '1'";
     $result = mysqli_query($connectionstring,$selectjobs);      
  
 }    
@@ -121,12 +100,13 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
 <br>    
 <form method="post" action="" class="form-inline" style=" margin: 0px auto; border: 1px solid aliceblue; width:950px; ">
   <div class="form-group mb-2">
-    <label for="jobtitle" class="sr-only">Job Title</label>
+    
     <select name="jobtitle" class="form-control" style="width: 250px;">
+    <option selected disabled>Preferred Field</option>    
     <?php
-    while($titles = mysqli_fetch_assoc($jobtitles)){
+    while($titles = mysqli_fetch_assoc($getfields)){
     ?> 
-    <option><?php echo $titles["J_TITLE"]?></option>    
+    <option value="<?php echo $titles["F_ID"]?>"><?php echo $titles["F_NAME"]?></option>    
     <?php    
     }    
     ?>  
@@ -139,7 +119,7 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
 <br>    
    <div class="form-group mb-2">
     <select class="form-control" style="width: 250px;" name="c_name" required>
-     <option selected disabled>Company Names</option>
+     <option selected disabled>Preferred Company</option>
      <option value="*">Any</option>    
      <?php
      while($names = mysqli_fetch_assoc($companynames)){   
@@ -156,44 +136,69 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
 </form>    
 <br>
 </div>
+    
 <br>
-<br>   
-<div style="display: flex; flex-wrap: wrap; width: 50vw; float: left; padding-left: 0.75vw; margin: 0px auto;"> 
-
-    
+<br>
 <?php
-
-if(mysqli_num_rows($result) > 0){  
+if(mysqli_num_rows($result) > 0){ 
     
-while($jobs = mysqli_fetch_assoc($result)){
-$j_id = $jobs['J_ID']; 
-    
+while($fjobs = mysqli_fetch_assoc($result)){ 
+$j_id = $fjobs['J_ID'];    
 $checksavedquery = "SELECT S_ID FROM savedjobs WHERE J_ID = '$j_id' AND U_ID = '$u_id'";
 $checksaved = mysqli_query($connectionstring,$checksavedquery);
-
-?>
+ 
+$featured_bin = $fjobs['Featured'];
     
-<div class="jobsearchresults" style="width:30vw; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
+$getemployerquery = "SELECT J_CREATOR FROM jobs WHERE J_ID = '$j_id'";
+$getemployer = mysqli_query($connectionstring,$getemployerquery);     
+
+    while($e = mysqli_fetch_assoc($getemployer)){
+        $employer_id = $e['J_CREATOR'];
+    }
+    
+$checkverifiedquery = "SELECT Verified FROM userprofiles WHERE ID='$employer_id'";
+$checkverified = mysqli_query($connectionstring,$checkverifiedquery);
+    
+while($cv = mysqli_fetch_assoc($checkverified)){
+    if(!empty($cv)){
+        $verified_bin = $cv['Verified'];
+    }
+    else{
+        echo"";
+    }
+    
+}    
+        
+?>    
+ <div class="jobsearchresults" style=" background-color: aliceblue; width:35vw;  margin: 0px auto; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
 <div>
     <?php
     if(mysqli_num_rows($checksaved) > 0){
     ?>
-    <a style="float: right;" href="Unsave.php?J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id ?> & F_ID=<?php echo $field?>"><h5>Unsave</h5></a>
+    <a style="float: right;" href="Unsave.php?J_ID=<?php echo $fjobs['J_ID']?> & U_ID=<?php echo $u_id ?> & F_ID=<?php echo $field?>"><h5>Unsave</h5></a>
     <?php
     }    
     else{ 
     ?>
-    <a href="SaveJob.php?J_ID=<?php echo $jobs['J_ID']?> & U_ID=<?php echo $u_id?> & F_ID=<?php echo $field?>"><img style="float: right;" src="save.png" width="32px" height="32px"></a>
+    <a href="SaveJob.php?J_ID=<?php echo $fjobs['J_ID']?> & U_ID=<?php echo $u_id?> & F_ID=<?php echo $field?>"><img style="float: right;" src="save.png" width="32px" height="32px"></a>
     <?php
     }
     ?>
-    <h6 hidden=""><?php echo $jobs['J_ID']?></h6>    
-    <h4><strong><?php echo $jobs['J_TITLE']?></strong></h4>
+    <h6 hidden=""><?php echo $fjobs['J_ID']?></h6>    
+    <h4><strong><?php echo $fjobs['J_TITLE']?></strong>
+    <?php      
+    if($verified_bin == 1){    
+    ?>
+    <img style="" title="Verified Employer" src="verified.png" width="32px" height="32px">    
+    <?php
+    } 
+    ?>    
+    </h4>
     <hr>
-    <h5><strong><?php echo $jobs['J_COMPANY']?></strong></h5>    
+    <h5><strong><?php echo $fjobs['J_COMPANY']?></strong></h5>    
    
     <?php
-    $type_id = $jobs['J_TYPE'];      
+    $type_id = $fjobs['J_TYPE'];      
     $gettypenamequery = "SELECT T_NAME FROM jobtype WHERE T_ID = '$type_id'";
     $gettypename = mysqli_query($connectionstring,$gettypenamequery);        
     while($name = mysqli_fetch_assoc($gettypename)){ 
@@ -203,7 +208,7 @@ $checksaved = mysqli_query($connectionstring,$checksavedquery);
     <h6><?php echo $typename?></h6>
     
     <?php
-    $FNUM = $jobs['J_FIELD'];    
+    $FNUM = $fjobs['J_FIELD'];    
     $fieldnamequery = "SELECT F_NAME FROM fields where F_ID = '$FNUM'";
     $fieldnameget = mysqli_query($connectionstring,$fieldnamequery);
     while($get = mysqli_fetch_assoc($fieldnameget)){
@@ -212,21 +217,21 @@ $checksaved = mysqli_query($connectionstring,$checksavedquery);
     ?>
     <h6><strong><span class="badge-light"><?php echo $fieldname?></span></strong></h6>
     <hr>
-    <a href="MoreInfoJobs.php?J_ID=<?php echo $jobs['J_ID']?> & user=<?php echo $u_id?> & field=<?php echo $jobs['J_FIELD']?>"><input type="button" class="btn btn-info" value="More Info" style="width: 12vw;"></a>
+    <img style=" float: right;" title="Featured Job" src="featured.png" width="32px" height="32px">
+    
+    <a href="MoreInfoJobs.php?J_ID=<?php echo $fjobs['J_ID']?> & user=<?php echo $u_id?> & field=<?php echo $jobs['J_FIELD']?>"><input type="button" class="btn btn-info" value="More Information" style="width: 12vw;"></a>
     <br>
 </div>     
 
-</div>    
+</div>  
 <?php
-    }
-    }
-    else{
-        
-        echo "No Results Found";
-    }
-?> 
-
-</div>    
-        
+}
+}
+else{
+    echo "<center><strong>No Matching Jobs Found!<strong></center>";
+}    
+?>
+<br><br>    
+<?php include('footer.php');?>      
 </body>
 </html>

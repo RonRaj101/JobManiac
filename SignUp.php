@@ -3,15 +3,8 @@ include("DBCONNECT.php");
 
 if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and isset($_POST['purpose']) and isset($_POST['pass'])){
     
-      if($_POST['purpose'] == '0'){
-          $url = "JobManiacHomeHIRE.php";
-      }
-      else if($_POST['purpose'] == '1'){
-          $url = "JobManiacHomeFIND.php";
-      }
-    
       extract($_POST);
-      $query = "INSERT INTO userprofiles(Name,Email,Phone,Purpose,Password,redirectURL) values('$name','$email','$num','$purpose','$pass','$url')";
+      $query = "INSERT INTO userprofiles(Name,Email,Phone,Purpose,Password) values('$name','$email','$num','$purpose','$pass')";
       $result = mysqli_query($connectionstring,$query) or die("Connection Error! Cannot Perform Action");
       header("location:Login.php");   
           
@@ -27,35 +20,25 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">    
 <link type="text/css" href="Style.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">    
 <style>
-     a{
-        color: green; 
-      }
-    
-     a:hover{
-        color: greenyellow;
-    }
-    
-    nav ul li{
-        padding: 0.5vw;    
-    }
-    
-    nav{
-        height: 3vh;
+    .logo{
+        font-family: 'Lobster', cursive;
     }
 </style>   
 </head>
 
 <body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
     <br>
-    
     <br>
     <br>
     <center>
-    <h1 class="logo"><ins>JOB MANIAC</ins></h1>
+    <center>
+    <a href="Login.php"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
+    </center>  
     </center> 
     <br>
      <div class="login-form-container" style=" box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;">   
@@ -94,8 +77,8 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
             </center>
         <br>
     </div>
-    <button id="btn">HIDE</button>
+   
     <br>
-    
+<?php include('footer.php');?>      
 </body>
 </html>

@@ -1,24 +1,8 @@
 <?php
+error_reporting(0);
 include("DBCONNECT.php");
 session_start();
-if(isset($_POST['email']) and isset($_POST['pass'])){
-      if($_SERVER["REQUEST_METHOD"] == "POST"){
-      $email =  mysqli_real_escape_string($connectionstring,$_POST['email']);
-      $pass = mysqli_real_escape_string($connectionstring,$_POST['pass']);     
-      $query = "SELECT * FROM userprofiles WHERE Email = '$email' AND Password = '$pass'";
-      $result = mysqli_query($connectionstring,$query);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);      
-      $count = mysqli_num_rows($result);
-          
-      $username = $row['Name'];
-      $_SESSION['user'] = $username;      
-          
-      $goto = $row['redirectURL'];      
-      if($count = 1){
-          header("location:$goto");
-      }      
-    }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -31,35 +15,63 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">     
 <link type="text/css" href="Style.css" rel="stylesheet"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
- a{
+    .logo{
+        font-family: 'Lobster', cursive;
+        text-decoration: none;
+    }
+    
+    a{
         color: green;
     }
-    
-    a:hover{
-        color: greenyellow;
-        
-    }
-    
-    nav ul li{
-        padding: 0.5vw;    
-    }
-    
-    nav{
-        height: 3vh;
-    } 
-    
 </style>    
 </head>
 <body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
+<?php
+if(isset($_POST['email']) and !empty($_POST['email']) and isset($_POST['pass']) and !empty($_POST['pass'])){
+      if($_SERVER["REQUEST_METHOD"] == "POST"){
+      $email =  mysqli_real_escape_string($connectionstring,$_POST['email']);
+      $pass = mysqli_real_escape_string($connectionstring,$_POST['pass']);
+          
+      $query = "SELECT * FROM userprofiles WHERE Email = '$email' AND Password = '$pass'";
+      $result = mysqli_query($connectionstring,$query);
+          
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);      
+      $count = mysqli_num_rows($result);
+          
+      $username = $row['Name'];
+      $_SESSION['user'] = $username;      
+        
+      if($row['Purpose'] == 1){
+          $goto = "JobManiacHomeFIND.php";
+      }  
+    
+      elseif($row['Purpose'] == 0){
+          $goto = "JobManiacHomeHIRE.php";
+      } 
+      
+            if($count == 1){
+          header("location:$goto");
+      }
+      elseif($count == 0){ 
+        echo "<div class='alert alert-danger alert-dismissible'>
+    <center><strong>Your Email and/or Password is Incorrect</strong></center>
+    </div>";  
+          
+      }
+          
+    }
+}    
+?>    
     <br>
 
     <br>
     <br>
     <center>
-    <h1 class="logo"><ins>JOB MANIAC</ins></h1>
+    <a href="Login.php" style="text-decoration: none;"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
     </center>    
     
     <br>
@@ -83,7 +95,7 @@ if(isset($_POST['email']) and isset($_POST['pass'])){
      <input type="submit" class="btn btn-success" value="Sign In"> 
     </form>
         <br>    
-     <a class="nav-link" href="SignUp.php">Sign Up Instead</a>        
+     <a class="nav-link" href="SignUp.php">Don't Have an Account, Sign Up Instead</a>        
             </center>
         <br>
     </div>    

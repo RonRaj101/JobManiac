@@ -49,16 +49,23 @@ if(isset($_POST['j_title']) and isset($_POST['j_desc']) and isset($_POST['j_sala
 <head>
 <meta charset="utf-8">
 <title>Edit Job Posting</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">    
 <link type="text/css" href="Style.css" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<style>
+ .logo{
+        font-family: 'Lobster', cursive;
+    }
+        
+</style>    
 </head>
 <body style="font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, 'sans-serif';" >
-   
-<form action="" method="post" style=" margin-left: 2vw; width: 500px;">
+<div style=" margin:0px auto; width: 500px;">   
+<form action="" method="post" >
 <br>    
 <center>    
-<h1 class="logo"><ins>JOB MANIAC</ins></h1>
+<a href="EmployerListings.php"><h1 class="logo">QUICK NOKRI.com</h1></a>
 <hr>     
 <h3>Edit Job Posting</h3>
 </center>    
@@ -104,13 +111,14 @@ while($values = mysqli_fetch_assoc($getallfields)){
 <label>Company:</label>     
 <input class="form-control" name="j_org" type="text" value="<?php echo $company ?>">
 <br>  
-<center>    
-<input class="btn btn-success" name="editjob" style="width:150px;" type="submit" value="Confirm Edit">
-</center>
-   
-<hr>     
-</form>
   
+<input class="btn btn-success" name="editjob" style="width:150px; float: right;" type="submit" value="Confirm Edit">
+   
+</form>
+<a href="EmployerListings.php"><input type="button" class="btn btn-dark" value="Go Back" style="width: 150px; float: left;"></a> 
+<hr>    
+</div>    
+
 <br>    
 </body>
 </html>
