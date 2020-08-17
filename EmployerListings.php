@@ -11,7 +11,6 @@ $countexec = mysqli_query($connectionstring,$countquery);
 
 $count_all = mysqli_num_rows($countexec);
 
-
 $getprofiledetailsquery = "SELECT * FROM userprofiles WHERE ID='$id'";
 $getprofiledetails = mysqli_query($connectionstring,$getprofiledetailsquery);
 
@@ -85,7 +84,7 @@ else{
     echo "";
 }    
 ?>
-<?php   
+<?php 
 if($_GET['f'] == 1){    
 ?>
 <div class="alert alert-success alert-dismissible">
@@ -100,6 +99,22 @@ elseif($_GET['f'] == 2){
     </div>     
 <?php
 }
+?>   
+<?php 
+if($_GET['status'] == 'ra'){    
+?>
+<div class="alert alert-success alert-dismissible">
+    <center><strong>Job Re-Activated Successfully</strong></center>
+    </div>    
+<?php    
+}
+elseif($_GET['status'] == 'ua'){
+?>  
+<div class="alert alert-success alert-dismissible">
+    <center><strong>Job Un-Activated Successfully</strong></center>
+    </div>     
+<?php
+    }
 ?>    
 <br>    
    <header style=" width: 98vw;">
@@ -230,11 +245,24 @@ $count_active = mysqli_num_rows($getactivejobs);
     <?php 
     }
     ?>
-    <a href="JobApplicants.php?J_ID=<?php echo $row['J_ID']?> & U_ID=<?php echo $id?>"><input type="button" class="btn btn-primary" value="Job Applicants" style="width: 10vw;" title="People who applied for this Job"></a>    
+    <a href="JobApplicants.php?J_ID=<?php echo $row['J_ID']?> & U_ID=<?php echo $id?>"><input type="button" class="btn btn-primary" value="Job Applicants" style="width: 10vw;" title="People who applied for this Job"></a> 
+     <?php 
+    if($st == 0){
+    ?>
+    <a href="Reactivate.php?J_ID=<?php echo $row['J_ID']?> & U_ID=<?php echo $id?>"><input type="button" class="btn btn-info" value="Re-Activate" style="width: 10vw;" title="Want Another Employee? Reactivate the Job"></a>
+    <?php
+    }
+    elseif($st == 1){        
+    ?>
+    <a href="Un-Activate.php?J_ID=<?php echo $row['J_ID']?> & U_ID=<?php echo $id?>"><input type="button" class="btn btn-dark" value="Un-Activate" style="width: 10vw;" title="Disable the Job Listing"></a>    
+    <?php
+        }
+    ?>    
     <br> 
       </div> 
     <br>    
-    <?php     
+    
+    <?php    
     }
     }
     else{

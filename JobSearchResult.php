@@ -136,7 +136,7 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
 </form>    
 <br>
 </div>
-    
+  
 <br>
 <br>
 <?php

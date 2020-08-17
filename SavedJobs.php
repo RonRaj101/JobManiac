@@ -135,11 +135,13 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
 <br>
 <center>    
 <h6><strong><u><?php echo $rows ?></strong></u> Jobs Saved </h6>
+  <p class="text-muted">Cannot Find a Particular Job? It May Have Been Removed or have Found A Candidate.</p>    
 </center>  
 <br> 
 <?php
   for($c = 0;$c <= $rows - 1 ;$c++){          
 ?>
+
     
 <div class="jobsearchresults" style=" margin: 0px auto; width:40vw; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
 <div>
@@ -180,6 +182,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
 <?php
 }   
 ?> 
+<br>    
 <?php include('footer.php');?>  
     
         

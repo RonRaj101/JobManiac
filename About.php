@@ -10,6 +10,7 @@ while($purp = mysqli_fetch_assoc($getpurpose)){
     $p = $purp['Purpose'];
 }
 
+
 if($p == 0){
     $link = "JobManiacHomeHIRE.php";
 }

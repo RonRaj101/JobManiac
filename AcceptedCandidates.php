@@ -112,9 +112,9 @@ while($e = mysqli_fetch_assoc($GetAccepted_cand)){
  <br>  
    <?php
     }
-          }   
+    }   
    ?>
-<br><br>    
+    
 <?php include('footer.php');?>      
 </body>
 </html>
