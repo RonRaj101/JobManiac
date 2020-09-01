@@ -110,9 +110,8 @@ while($values = mysqli_fetch_assoc($getallfields)){
 <br> 
 <label>Company:</label>     
 <input class="form-control" name="j_org" type="text" value="<?php echo $company ?>">
-<br>  
-  
-<input class="btn btn-success" name="editjob" style="width:150px; float: right;" type="submit" value="Confirm Edit">
+<br>
+<input  class="btn btn-success" name="editjob" style="width:150px; float: right;" type="submit" value="Confirm Edit">
    
 </form>
 <a href="EmployerListings.php"><input type="button" class="btn btn-dark" value="Go Back" style="width: 150px; float: left;"></a> 

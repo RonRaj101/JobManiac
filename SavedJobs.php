@@ -16,10 +16,7 @@ while($pic = mysqli_fetch_assoc($getprofiledetails)){
 <meta charset="utf-8">
 <title>Saved Jobs</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">      
+    
 <link type="text/css" href="Style.css" rel="stylesheet">
 
 <style>
@@ -76,7 +73,7 @@ while($pic = mysqli_fetch_assoc($getprofiledetails)){
            <img id="profileimg" width="35px" height="37px;" title="Profile Information" src="<?php echo $imgurl?>">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="Profile.php?ID=<?php echo $u_id?>">Profile</a>
+          <a class="dropdown-item" href="Profile.php?ID=<?php echo $user_id?>">Profile</a>
           <a class="dropdown-item" href="LogOut.php">Log Out <img width="24px" height="24px" src="logout.png"></a>        
         </div>
       </li>    

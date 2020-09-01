@@ -79,6 +79,7 @@ $u_id = $_GET['ID'];
     ?>     
 <br>   
     <center>
+    
     <a href="JobManiacHomeFIND.php"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
     </center> 
 <br>    

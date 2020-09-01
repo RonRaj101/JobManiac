@@ -12,6 +12,7 @@ while($get = mysqli_fetch_assoc($getuserdetails)){
     $p = $get['Purpose'];
 }
 
+
 if(!empty($ans1) and !empty($ans2))
 {
     
@@ -39,6 +40,6 @@ elseif (empty($ans1) and empty($ans2)){
 </head>
 
 <body>
-    
+
 </body>
 </html>

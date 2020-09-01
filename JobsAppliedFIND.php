@@ -114,7 +114,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
     $typename = $n['T_NAME'];
     }                            
     ?>    
-    <h6><?php echo $typename ?></h6>
+    <h6> <?php echo $typename ?> </h6>
     
     <?php
     $fieldid = $j_fieldids[$c];                                               
@@ -125,6 +125,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
     }
     $curr_jobid = $j_ids[$c];                                
     ?>
+
     <h6><strong><span class="badge-light"><?php echo $fieldname ?></span></strong></h6>
     <hr>
     <a href="MoreInfoJobs.php?J_ID=<?php echo $j_ids[$c] ?> & user=<?php echo $u_id ?>"><input type="button" class="btn btn-info" value="More Information" style="width: 12vw;"></a>
@@ -136,7 +137,9 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
 <br>
 <?php
 }
+
 ?> 
 <?php include('footer.php');?>  
+
 </body>
 </html>

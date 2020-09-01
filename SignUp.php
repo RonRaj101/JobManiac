@@ -37,7 +37,7 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
     <br>
     <center>
     <center>
-    <a href="Login.php"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
+    <a href="Index.html"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
     </center>  
     </center> 
     <br>

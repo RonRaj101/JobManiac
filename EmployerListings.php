@@ -3,7 +3,8 @@ error_reporting(0);
 include("DBCONNECT.php");
 session_start();
 $id = $_SESSION['id'];
-$checkseen = "UPDATE jobs SET Seen = '1' WHERE Seen = 0";
+
+$checkseen = "UPDATE jobs SET Seen = '1' WHERE Seen = 0 WHERE J_CREATOR = '$id'";
 $execute = mysqli_query($connectionstring,$checkseen);
 
 $countquery = "SELECT * FROM jobs WHERE J_CREATOR = '$id'";

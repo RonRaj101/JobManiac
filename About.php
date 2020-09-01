@@ -32,15 +32,17 @@ if($p == 1){
 <style>
 .logo{
         font-family: 'Lobster', cursive;
-    }    
+    }  
+      
 </style>           
 </head>
 
 <body>
     <br>
   <center>
-    <a href="JobManiacHomeFIND.php"><h1 class="logo">QUICK NOKRI.com</h1></a>
+    <a href="<?php echo $link?>"><h1 class="logo">QUICK NOKRI.com</h1></a>
   </center> 
+    
     <br>
     <div style="padding-right: 10vw; padding-left: 10vw;">
     <h3>About This Website: </h3>
