@@ -18,13 +18,16 @@ while($apps = mysqli_fetch_assoc($getapplicants)){
 <html>
 <head>
 <meta charset="utf-8">
-<title>Job Applicants</title>
+<title>QUICKNOKRI | Job Applicants</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">       
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">        
 <link type="text/css" href="Style.css" rel="stylesheet">
+<link type="text/css" href="all.css" rel="stylesheet">
 <style>
   #profileimg{
         border-radius: 01vw;
@@ -159,7 +162,7 @@ elseif($acp == 2){
 }    
     
 ?>
-<div id="<?php echo $box_id?>" style=" margin: 0px auto; width:<?php echo $size_hor?>; height:20vh; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; padding: 1vw; border:<?php echo $border?>;">   
+<div id="<?php echo $box_id?>" style=" margin: 0px auto; width:<?php echo $size_hor?>; height:22vh; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; padding: 1vw; border:<?php echo $border?>;">   
 <div style="width: 9vw; float: left; border-right:1px solid black;">       
 <img width="100px" height="120px" src="<?php echo $dpimg[$x]?>"> 
 </div>
@@ -180,7 +183,7 @@ if($acp == 0){
 elseif($acp == 1){
 ?> 
 <br><br>
-<input type="button" class="btn btn-info" style="display: inline;float: right; width: 10vw; border-radius:0px;" value="Candidate Selected" disabled>  
+<input type="button" class="btn btn-info" style="display: inline;float: right; width: 12vw; border-radius:0px;" value="Candidate Selected" disabled>  
 <?php
 } 
 elseif($acp == 2){    

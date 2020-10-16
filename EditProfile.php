@@ -113,13 +113,16 @@ if(isset($_POST['p_name']) and isset($_POST['p_email']) and isset($_POST['p_phon
 <html>
 <head>
 <meta charset="utf-8">
-<title>Edit Profile Information</title>
+<title>QUICKNOKRI | Edit Profile</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">       
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">       
 <link type="text/css" href="Style.css" rel="stylesheet">
+<link type="text/css" href="all.css" rel="stylesheet">
 <style>
     
      .logo{
@@ -173,9 +176,6 @@ if(isset($_POST['p_name']) and isset($_POST['p_email']) and isset($_POST['p_phon
 </style>     
 </head>
 <body>
-<center>    
-<a href="Profile.php?ID=<?php echo $u_id?>"><h1 style=" text-decoration: none; padding-top: 1vw; width: 25vw;" class="logo">QUICK NOKRI.com</h1></a>
-</center>
 <br>
 <div style=" margin:0px auto; width: 500px;">   
     <form action="" method="post" id="edit" ></form>
@@ -204,8 +204,8 @@ if(isset($_POST['p_name']) and isset($_POST['p_email']) and isset($_POST['p_phon
     
 <img name="dp" src="<?php echo $dp?>" width="124px" height="164px">
 <br><br>    
-<input form="updateimg" style="width: 15vw;" type="file" name="p_dp" class="form-control-file">        
-<input form="updateimg" type="submit" style="width: 8vw; border-radius: 0vw;" name="updatedp" value="Update Image" class="btn btn-dark">
+<input form="updateimg" style="width: 16vw;" type="file" name="p_dp" class="form-control-file">        
+<input form="updateimg" type="submit" style="width: 10vw; border-radius: 0vw;" name="updatedp" value="Update Image" class="btn btn-dark">
 
 <br>    
 <br> 
@@ -213,7 +213,7 @@ if(isset($_POST['p_name']) and isset($_POST['p_email']) and isset($_POST['p_phon
     
 <a target="_blank" href="<?php echo $cv?>"><?php echo $cv?></a>  
 <input form="addcv" type="file" name="p_cv" class="form-control-file"> 
-<input form="addcv" type="submit" style="width: 10vw; border-radius: 0vw;" name="cvu" value="Update/Upload CV" class="btn btn-dark">    
+<input form="addcv" type="submit" style="width: 12vw; border-radius: 0vw;" name="cvu" value="Update/Upload CV" class="btn btn-dark">    
 <br><br> 
 <label>Social Link</label>     
 <input form="edit" class="form-control" placeholder="Add Social Link" type="text" name="p_sl" value="<?php echo $social ?>">

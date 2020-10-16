@@ -25,13 +25,16 @@ while($pic = mysqli_fetch_assoc($getprofiledetails)){
 <html>
 <head>
 <meta charset="utf-8">
-<title>Your Listings</title>
+<title>QUICKNOKRI | Job Listings (<?php echo $count_all?>)</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">       
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">        
 <link type="text/css" href="Style.css" rel="stylesheet">  
+<link type="text/css" href="all.css" rel="stylesheet">
 <script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
@@ -222,7 +225,7 @@ $count_active = mysqli_num_rows($getactivejobs);
     ?>    
     <h6>Field of Work: <strong><?php echo $fieldname?></strong></h5>   
     <hr>
-    <a href="DelJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-danger" value="Remove Job Listing" style="width: 10vw;"></a>
+    <a href="DelJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-danger" value="Remove Job Listing" style="width: 12vw;"></a>
     <a href="EditJob.php?J_ID=<?php echo $row['J_ID']?>"><input type="button" class="btn btn-secondary" value="Edit Job Listing" style="width: 10vw;"></a>
     <?php
      $jobid = $row['J_ID'];

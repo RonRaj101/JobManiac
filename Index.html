@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <title>QuickNokri | Job Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="logoinv.ico"/>    
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">     
 <link type="text/css" href="Style.css" rel="stylesheet">  
 <style>
@@ -15,33 +17,144 @@
         font-family: 'Lobster', cursive;
         width: 24vw;
     }
-    nav a{
-        color: green;
-        
-    }
-    
-    nav a:hover{
-        color: greenyellow;
-        border-bottom: 2px solid lawngreen;
-    }
+  
     
     nav ul li{
-        padding: 1vw;    
+        padding: 10px;    
     }
     
     
+    .navbar-brand{
+        width: 500px !important;
+    }
+    
+  
+    .card{
+        padding: 1vw;
+    }
+    .full {
+    width: 100%;    
+}
+.gap {
+	height: 30px;
+	width: 100%;
+	clear: both;
+	display: block;
+}
+.footer {
+	height:380px;
+	padding-bottom: 30px;
+	position: relative;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #DDDDDD;
+    color: aliceblue;
+    background: #D5D5D5;
+}
+.footer p {
+	margin: 0;
+}
+.footer img {
+	max-width: 100%;
+}
+.footer h3 {
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 27px;
+	padding: 40px 0 0px;
+	text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.footer h4 {
+	color: white;
+	font-size: 2em;
+	font-weight: 600;
+	line-height: 38px;
+	padding: 40px 0 10px;
+}
+
+.footer ul {
+	font-size: 13px;
+	list-style-type: none;
+	margin-left: 0;
+	padding-left: 0;
+	margin-top: 0px;
+	color: #7F8C8D;
+  padding: 0 0 8px 0;
+}
+
+.email{
+  border-bottom: 3px solid #fff;
+}
+.footer ul li a {
+	padding: 0 0 12px 0;
+	display: block;
+}
+.footer a {
+	color: white;
+  font-weight: lighter;
+}
+
+.footer p {
+	color: white;
+  font-weight: lighter;
+  font-size: 
+}
+
+.footer a:hover {
+	text-decoration:none;
+  font-weight: bold;
+}
+.supportLi h4 {
+	font-size: 20px;
+	font-weight: lighter;
+	line-height: normal;
+	margin-bottom: 0 !important;
+	padding-bottom: 0;
+}
+
+.bg-gray {
+	background-image: -moz-linear-gradient(center bottom, #BBBBBB 0%, #F0F0F0 100%);
+	box-shadow: 0 1px 0 #B4B3B3;
+}
+
+}
+.footer a {
+	color: #78828D
+}
+
+.footer-bottom {
+  margin-top: 2em;
+	border-top: 1px solid #DDDDDD;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.footer-bottom p.pull-left {
+	padding-top: 6px;
+  font-size: 0.75em
+}
+      
     #profileimg{
         border-radius: 01vw;
     }
-    .navbar-brand{
-        width: 25vw !important;
-    }
+
+.display-4{
+  font-size:2.5vw;
+  text-underline-position: all;
+}
+
+.bfs{
+   min-width: 500px;
+
+}
    
-    
 </style>     
 </head>      
 <body>
-<header style="background-color: #8F8F8F; height: 650px;">
+
+
  <nav class="navbar navbar-dark bg-dark" style="height: 160px;">
     <h2 class="logo"><img src="logoinv.png" width="75px" height="70px" alt=""> QUICKNOKRI.com</h2>
      
@@ -57,27 +170,163 @@
          </li>
       </ul> 
 </nav>
+  
 <br><br>
-<div class="card" style=" float: left; margin-left: 5vw; background-color: transparent; border: none; width: 18rem;">
-  <img src="findjob.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <center>  
-    <h3 class="card-title">Job Seeker Portal</h3>
-    <p class="card-text">Find Your Perfect Job</p>
-    </center>    
-  </div>
-</div>
-<div class="card" style=" float:right; margin-right:7vw; background-color: transparent; border: none; width: 18rem;">
-  <img src="findemployee.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <center>  
-    <h3 class="card-title">Employee Finder Portal</h3>
-    <p class="card-text">Find The Perfect Candidate For Your Job</p>
-    </center>    
-  </div>
-</div>    
-</header>      
+ 
+<div class="row" style="padding: 1vw;">
 
-    
+  <div class="col-sm-6">
+    <div class="card">
+      <img src="findjob.png" alt="" width="150px" height="140px" style="padding:1vw;">
+      <div class="card-body">
+        <h5 class="card-title">Find Your Dream Job</h5>
+        <p class="card-text">With A Quick Basic Field Related Search Find & Apply On Your Perfect Job in Seconds.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <img src="findemployee.png" alt="" width="150px" height="140px" style="padding:1vw;">
+      <div class="card-body">
+        <h5 class="card-title">Find Your Dream Employee</h5>
+        <p class="card-text">List Your Job Vacancy and Effortlessly Select Your Perfect Candidate.</p>
+        
+      </div>
+    </div>
+  </div>
+
+</div> 
+
+  
+   
+<hr>
+
+<div class="bfs" style="padding: 1vw;">
+<h3 class="display-4">Benefits for Prospective Employee's:</h3>    
+<ul class="list-unstyled">
+  <li class="media">
+    <img src="easy.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Easy & Quick Account Setup</h5>
+      Get Started on your Job Searching Journey in <strong>Less Than 5 Minutes</strong>.
+    </div>
+  </li>
+  <li class="media my-4">
+    <img src="interface.jpg" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">One Click Away From a Job</h5>
+      <strong>Find a Job</strong> According to Your Field. Click on <strong>More Information</strong>. <strong>Apply </strong>& You are Done!
+    </div>
+  </li>
+  <li class="media">
+    <img src="feature.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Features For Ease of Use</h5>
+      Feature to Save Favorite Jobs, Get an Advanced Search Option, Ability to See What Jobs you Have Applied to.
+    </div>
+  </li>
+    <br>
+    <h6 class="text-muted">And Many More...</h6>
+</ul>   
+ 
+<hr>
+
+<h3 class="display-4">Benefits for Employer's:</h3>    
+<ul class="list-unstyled">
+  <li class="media">
+    <img src="vacancy.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Easily Show Your Vacany</h5>
+      Post a Job Listing and Get the Ability to Edit,Feature & View Applicants.
+    </div>
+  </li>
+  <li class="media my-4">
+    <img src="spotlight.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Feature Your Job</h5>
+      Give Your Listing it's well deserved Spotlight by Featuring it.
+    </div>
+  </li>
+  <li class="media">
+    <img src="candidate.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Select a Fitting Candidate/Candidates</h5>
+      Click on Job Applicants on the Job Listing. Review & Select Your Perfect Candidate. 
+    </div>
+  </li>
+    <br>
+    <h6 class="text-muted">And Many More...</h6>
+</ul>   
+
+<hr>
+
+<h3 class="display-4">Universal Benefits: </h3>    
+<ul class="list-unstyled">
+  <li class="media">
+    <img src="verified.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Have a Verified Account</h5>
+      Employers will be more credible if they have a verified badge.
+      Employees are required to get a verified badge inorder to apply to a job.    
+    </div>
+  </li>
+  <li class="media my-4">
+    <img src="user (1).png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Easy to Use Interactive UI</h5>
+      No hard process everything is quick,relaible and easy to use.
+    </div>
+  </li>
+  <li class="media">
+    <img src="edit.png" width="64px" height="64px" class="mr-3" alt="...">
+    <div class="media-body">
+      <h5 class="mt-0 mb-1">Easy Application and Control</h5>
+      Control & Customize your Job Listing,Profile or Resume. Everything is editable. 
+    </div>
+  </li>
+    <br>
+    <h6 class="text-muted">And Many More...</h6>
+</ul>   
+</div>
+<br>
+<br>
+ <footer style="">
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <h4 style="word-spacing: 0.1vw; letter-spacing: 0.2vw; " class="logo"> Quick Nokri.com </h4>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <h3> Contact Me At:</h3>
+                    <ul>
+                        <li>Email: <a class="email"href="#">ronitrocko100@gmail.com </a></li>
+                        <li>Facebook: <a class="email"href="#">Ronit Raj </a></li>
+                        <li>LinkedIn: <a class="email"href="#">Ronit Rai </a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-2 col-xs-3">
+                    <ul>
+                        <li> <h5> <a href="About.php" style="margin-top: 5em"> ABOUT ME</a> <h5></li>
+                        <li> <h5> <a href="About.php" style=""> ABOUT This Website</a> <h5></h5></li>    
+                    </ul>
+                </div>
+               
+            <!--/.row--> 
+        </div>
+        <!--/.container--> 
+    </div>
+    <!--/.footer-->
+                          
+    <div class="footer-bottom">
+        <div class="container">
+            <p style="font-size: 24px;" class="pull-left copyright">Created By <strong>Ronit Rai</strong> For <strong>Aptech Vision 2020</strong></p>
+       
+        </div>
+    </div>
+    <!--/.footer-bottom--> 
+
+</footer>    
 </body>
 </html>

@@ -1,14 +1,16 @@
 <!doctype html>
-<html>
-<head>
+<html><head>
 <meta charset="utf-8">
-<title>Additional Information</title>
+<title>QUICKNOKRI | Additional Information</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet"> 
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">     
 <link type="text/css" href="Style.css" rel="stylesheet">
+<link type="text/css" href="all.css" rel="stylesheet">
 <style>
 .logo{
         font-family: 'Lobster', cursive;
@@ -19,9 +21,8 @@
 <body>
     <br>
      <center>
-    <h1 class="logo">QUICK NOKRI.com</h1>
-    </center> 
-    <br>    
+   <a href="JobManiacHomeFIND.php" style="text-decoration: none;"><h1 class="logo"><img width="50px" height="50px" src="logoinv.png" alt="QuickNokri"> QUICK NOKRI.com</h1></a>
+    </center>   
 <?php
 include('DBCONNECT.php');
 
@@ -36,8 +37,8 @@ $getjobappl = mysqli_query($connectionstring,$getjobapplsql);
 
 $jobappl_bin = mysqli_num_rows($getjobappl);    
 ?>
-<br><br><br>    
-<div style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; width: 50vw; margin: 0px auto; background-color: white; border-radius: 0.2vw;" id="jobadditionalinfo">
+<br>  
+<div style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; max-width:700px; min-width:700px; height: auto; margin: 0px auto; background-color: white; border-radius:7px;" id="jobadditionalinfo">
 <?php
 if($getjobinfo != NULL){    
 while($info = mysqli_fetch_assoc($getjobinfo)){
@@ -45,7 +46,7 @@ while($info = mysqli_fetch_assoc($getjobinfo)){
 <div id="info" style=" padding: 1.5vw;">
     
 <h3><strong><?php echo $info['J_TITLE'] ?></strong></h3>
-<hr> 
+
 <h5>At <strong><?php echo $info['J_COMPANY'];?></strong></h5>      
 <h6>"<strong><i><?php echo $info['J_DESC'];?></i></strong>"</h6>
 <?php
@@ -74,16 +75,16 @@ while($n = mysqli_fetch_assoc($getfieldname)){
 <?php
 if($jobappl_bin == 0){    
 ?>    
-<a href="JobApplication.php?ID=<?php echo $user?> & J_ID=<?php echo $job_id?> & field = <?php echo $fieldid?>"><input class="btn btn-success" style="width: 15vw; float: right;" type="button" value="Apply For Job"></a>
+<a href="JobApplication.php?ID=<?php echo $user?> & J_ID=<?php echo $job_id?> & field = <?php echo $fieldid?>"><input class="btn btn-success" style="width: 250px; float: right;" type="button" value="Apply For Job"></a>
 <?php
 }
 elseif($jobappl_bin == 1){                                               
 ?>
-<a><input class="btn btn-dark" style=" border-radius: 0vw; width: 15vw; float: right;" type="button" value="Already Applied For This Job"></a>    
+<a><input class="btn btn-dark" style=" border-radius: 0px; width: 250px; float: right;" type="button" value="Already Applied For This Job" disabled></a>    
 <?php
    } 
 ?>  
-<a href="JobManiacHomeFIND.php?field=<?php echo $fieldid?>"><input type="button" style="width: 5vw; float: left;" class="btn btn-dark" value="<<"></a> 
+<a href="JobManiacHomeFIND.php?field=<?php echo $fieldid?>"><input type="button" style="width: 50px; float: left;" class="btn btn-dark" value="<<"></a> 
 <br>    
 </div>
    

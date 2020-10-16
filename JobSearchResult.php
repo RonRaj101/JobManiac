@@ -16,13 +16,16 @@ $u_id = $_GET['ID'];
 <html>
 <head>
 <meta charset="utf-8">
-<title>Job Search Result</title>
+<title>QUICKNORKI | Advanced Search</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">     
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">   
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">   
 <link type="text/css" href="Style.css" rel="stylesheet">
+<link type="text/css" href="all.css" rel="stylesheet">
 <style>
      .logo{
         font-family: 'Lobster', cursive;
@@ -34,12 +37,12 @@ $u_id = $_GET['ID'];
     
     a:hover{
         color: greenyellow;
-        border-bottom: 2px solid lawngreen;
+       
         text-decoration: none;
     }
     
     nav ul li{
-        padding: 0.5vw;
+        padding: 10px;
         
     }
     
@@ -56,7 +59,7 @@ $u_id = $_GET['ID'];
      
 </head>
 
-<body style="padding: 1vw;">
+<body style="padding:10px;">
 <?php
     if($_GET['saved'] == 1){ 
     $_GET['unsaved'] = 0;    
@@ -79,8 +82,7 @@ $u_id = $_GET['ID'];
     ?>     
 <br>   
     <center>
-    
-    <a href="JobManiacHomeFIND.php"><h1 style=" width: 25vw; padding: 1vw;" class="logo">QUICK NOKRI.com</h1></a>
+    <a href="JobManiacHomeFIND.php"><h1 style="" class="logo"><img src="logoinv.png" width="50px" height="50px" alt=""></h1></a>
     </center> 
 <br>    
  
@@ -94,15 +96,15 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
 }    
 ?>
 <br>    
-<div style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px; width: 1000px; margin:0px auto;">    
+<div style="box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px; min-width: 600px; max-width: 1000px; margin:0px auto;">    
 <br>
     <center><h4>Advanced Job Search</h4></center>
     
 <br>    
-<form method="post" action="" class="form-inline" style=" margin: 0px auto; border: 1px solid aliceblue; width:950px; ">
+<form method="post" action="" class="form-inline" style=" margin: 0px auto; border: 1px solid aliceblue; min-width:550px;  max-width: 950px;">
   <div class="form-group mb-2">
     
-    <select name="jobtitle" class="form-control" style="width: 250px;">
+    <select name="jobtitle" class="form-control" style="min-width: 250px;">
     <option selected disabled>Preferred Field</option>    
     <?php
     while($titles = mysqli_fetch_assoc($getfields)){
@@ -115,11 +117,11 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
   </div>
   <div class="form-group mb-2">
     <label for="prefsalary" class="sr-only"></label>
-    <input type="text" class="form-control" style="width: 250px;" name="prefsalary" id="" placeholder="Preferred Salary(Upto)">
+    <input type="text" class="form-control" style="min-width: 250px;" name="prefsalary" id="" placeholder="Preferred Salary(Upto)">
   </div>
 <br>    
    <div class="form-group mb-2">
-    <select class="form-control" style="width: 250px;" name="c_name" required>
+    <select class="form-control" style="min-width: 250px;" name="c_name" required>
      <option selected disabled>Preferred Company</option>
      <option value="*">Any</option>    
      <?php
@@ -132,7 +134,7 @@ if(isset($_POST['jobtitle']) and isset($_POST['prefsalary']) and isset($_POST['c
     </select>
   </div> 
 <center>    
-  <input style="width: 10vw; margin-left: 1vw; " type="submit" class="btn btn-success mb-2" value="Advanced Search">
+  <input style="width:180px; margin-left:5px ; " type="submit" class="btn btn-success mb-2" value="Advanced Search">
 </center>    
 </form>    
 <br>
@@ -171,7 +173,7 @@ while($cv = mysqli_fetch_assoc($checkverified)){
 }    
         
 ?>    
- <div class="jobsearchresults" style=" background-color: aliceblue; width:35vw;  margin: 0px auto; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
+ <div class="jobsearchresults" style=" max-width: 500px; min-width: 500px; border:2px solid black; border-radius:5px; padding:10px; background-color: aliceblue; margin: 0px auto;  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px;  word-break: break-all; box-sizing: content-box;">
 <div>
     <?php
     if(mysqli_num_rows($checksaved) > 0){
@@ -220,7 +222,7 @@ while($cv = mysqli_fetch_assoc($checkverified)){
     <hr>
     <img style=" float: right;" title="Featured Job" src="featured.png" width="32px" height="32px">
     
-    <a href="MoreInfoJobs.php?J_ID=<?php echo $fjobs['J_ID']?> & user=<?php echo $u_id?> & field=<?php echo $jobs['J_FIELD']?>"><input type="button" class="btn btn-info" value="More Information" style="width: 12vw;"></a>
+    <a href="MoreInfoJobs.php?J_ID=<?php echo $fjobs['J_ID']?> & user=<?php echo $u_id?> & field=<?php echo $jobs['J_FIELD']?>"><input type="button" class="btn btn-info" value="More Information" style="width:180px;"></a>
     <br>
 </div>     
 

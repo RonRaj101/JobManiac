@@ -16,6 +16,7 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
 <head>
 <meta charset="utf-8">
 <title>Sign Up</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -23,7 +24,9 @@ if(isset($_POST['name']) and isset($_POST['email']) and isset($_POST['num']) and
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">    
 <link type="text/css" href="Style.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<link type="text/css" href="all.css" rel="stylesheet">  
 <style>
     .logo{
         font-family: 'Lobster', cursive;

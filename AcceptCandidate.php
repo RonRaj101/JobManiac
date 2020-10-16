@@ -6,7 +6,8 @@ $j_id = $_GET['J_ID'];
 $AcceptCandidatesql = "UPDATE jobapplications SET Accepted = '1' WHERE J_ID='$j_id' AND U_ID='$u_id'";
 $AcceptCandidate = mysqli_query($connectionstring,$AcceptCandidatesql);
 
-header("location:JobApplicants.php?U_ID=$u_id & J_ID=$j_id & s=a");  
+header("location:JobApplicants.php?U_ID=$u_id & J_ID=$j_id & s=a"); 
+
 
 ?>
 <!doctype html>
@@ -15,11 +16,13 @@ header("location:JobApplicants.php?U_ID=$u_id & J_ID=$j_id & s=a");
 <meta charset="utf-8">
 <title>Accepting Candidate....</title>
 <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet"> 
 <style>
    
 </style>    
 </head>
 <body>
+
 
 <center> 
 <h2 style="font-family: 'Recursive', sans-serif; "><strong style="color: #42FF2C;">Congratulations!</strong> For Selecting Your Perfect Candidate.</h2>

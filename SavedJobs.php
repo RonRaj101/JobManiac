@@ -9,13 +9,24 @@ $getprofiledetails = mysqli_query($connectionstring,$getprofiledetailsquery);
 while($pic = mysqli_fetch_assoc($getprofiledetails)){
     $imgurl = $pic['profileimgurl'];
 }
+
+$get = "SELECT * FROM savedjobs WHERE U_ID = '$user_id'";
+$exec = mysqli_query($connectionstring,$get);
+    
+$rows = mysqli_num_rows($exec);
 ?>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Saved Jobs</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    
+<title>QUICKNOKRI | Saved Jobs (<?php echo $rows ?>)</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">    
+<link type="text/css" href="all.css" rel="stylesheet">
     
 <link type="text/css" href="Style.css" rel="stylesheet">
 
@@ -26,73 +37,88 @@ while($pic = mysqli_fetch_assoc($getprofiledetails)){
         font-family: 'Lobster', cursive;
     }
     
-    nav a{
-        color: green;
-        
-    }
-    
-    nav a:hover{
-        color: greenyellow;
-        border-bottom: 2px solid lawngreen;
-    }
     
     nav ul li{
-        padding: 0.5vw;    
+
+        padding: 10px;    
     }
-    
-    nav{
-        height: 3vh;
-    }
-    
+   
       
     #profileimg{
         border-radius: 01vw;
     }
+
+
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
 </style>        
 </head>
 
-<body>
- <header style=" width: 98vw;">
-<a href="JobManiacHomeFIND.php"><h1 style=" width: 25vw; padding: 1vw; float: left;" class="logo">QUICK NOKRI.com</h1></a>
-    
-<nav class="navbar navbar-expand-lg" style=" background-color: aliceblue; display: block; float: right; flex-flow: nowrap;">
-  <div style="margin-right: 3vw;" class="collapse navbar-collapse" id="navbarNav">
-      <center> 
-    <ul class="navbar-nav">
-      <li class="nav-item active" style="">
-        <a class="nav-link" href="JobSearchResult.php?ID=<?php echo $user_id?>">Advanced Job Search</a> 
+<body>  
+<nav class="navbar navbar-expand-lg navbar-light bg-light display-4" style="font-size:15px;" >
+  <a class="navbar-brand" href="#"><img width="50px" height="50px" src="logoinv.png" alt="QuickNokri"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav" style="">
+    <ul class="navbar-nav ml-auto" style="float: right!important;">
+     <li class="nav-item">
+        <a class="nav-link" href="JobManiacHomeFIND.php">Home</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="JobSearchResult.php?ID=<?php echo $user_id?>">Advanced Job Search</a>
+      </li>
+       <li class="nav-item active " style="">
+        <a class="nav-link" href="SavedJobs.php?user=<?php echo $user_id?>">Saved Job's <span class="badge badge-info"><?php echo $rows ?></span></a> 
+      </li>
+             <li class="nav-item" style="">
+        <a class="nav-link" href="#">Featured Jobs</a>
       </li>    
-      <li class="nav-item active" style="">
-        <a class="nav-link" href="JobManiacHomeFIND.php">Search For Jobs</a> 
-      </li>
-      <li class="nav-item active" style="">
-        <a class="nav-link" href="#">About</a>
-      </li>
-          <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <img id="profileimg" width="35px" height="37px;" title="Profile Information" src="<?php echo $imgurl?>">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="Profile.php?ID=<?php echo $user_id?>">Profile</a>
-          <a class="dropdown-item" href="LogOut.php">Log Out <img width="24px" height="24px" src="logout.png"></a>        
+       
+      <li class="nav-item " style="">
+        <a class="nav-link" href="About.php?ID=<?php echo $user_id?>">About</a>
+      </li> 
+       <li class="nav-item">
+        <div class="dropdown" style="float: right;">
+           <center>
+           <img id="profileimg" width="35px" height="30px" title="Profile Information" src="<?php echo $imgurl ?>">
+           </center>
+           <div class="dropdown-content">
+           <img id="" width="75px" height="60px" title="Profile Information" src="<?php echo $imgurl ?>">
+           <br><br>
+           <a class="badge badge-light" style="padding:0.75vw;" href="Profile.php?ID=<?php echo $user_id?>">Profile Information</a>
+           <br>
+           <a class="badge badge-light" style="padding: 0.5vw;" href="LogOut.php">Log Out  <img width="15px" height="15px" src="logout.png" alt=""></a>
+           </div>
         </div>
-      </li>    
-    </ul>  
-        </center>  
+      </li>   
+    </ul>
   </div>
 </nav>
-</header>    
-<br>
-<br>    
-<br>    
-<hr>    
+  
+ 
 <?php
 
 
-$get = "SELECT * FROM savedjobs WHERE U_ID = '$user_id'";
-$exec = mysqli_query($connectionstring,$get);
-    
-$rows = mysqli_num_rows($exec);
+
 
 $getjobidquery = "SELECT J_ID FROM savedjobs WHERE U_ID = '$user_id'";    
 $getjobid = mysqli_query($connectionstring,$getjobidquery);
@@ -132,7 +158,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
 <br>
 <center>    
 <h6><strong><u><?php echo $rows ?></strong></u> Jobs Saved </h6>
-  <p class="text-muted">Cannot Find a Particular Job? It May Have Been Removed or have Found A Candidate.</p>    
+  <p class="text-muted">Cannot Find a Particular Job? It May Have Been Removed by the Employer.</p>    
 </center>  
 <br> 
 <?php
@@ -140,7 +166,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
 ?>
 
     
-<div class="jobsearchresults" style=" margin: 0px auto; width:40vw; border:0.1vw solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 0.4vw; padding: 1vw; word-break: break-all; box-sizing: content-box;">
+<div class="jobsearchresults" style=" margin: 0px auto; width:500px; border:3px solid black; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px; border-radius: 5px; padding: 10px; word-break: break-all; box-sizing: content-box;">
 <div>
    
     <a style="float: right;" href="Unsave.php?J_ID=<?php echo $j_ids[$c]?> & U_ID=<?php echo $user_id ?>"><h5>Unsave</h5></a>
@@ -170,7 +196,7 @@ for($x = 0;$x<=count($j_ids)-1;$x++){
     ?>
     <h6><strong><span class="badge-light"><?php echo $fieldname ?></span></strong></h6>
     <hr>
-    <a href="MoreInfoJobs.php?J_ID=<?php echo($j_ids[$c]) ?> & user=<?php echo $user_id ?>"><input type="button" class="btn btn-info" value="More Info" style="width: 12vw;"></a>
+    <a href="MoreInfoJobs.php?J_ID=<?php echo($j_ids[$c]) ?> & user=<?php echo $user_id ?>"><input type="button" class="btn btn-info" value="More Info" style="width: 180px;"></a>
     <br>
 </div>     
 </div>

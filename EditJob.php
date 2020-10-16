@@ -48,11 +48,14 @@ if(isset($_POST['j_title']) and isset($_POST['j_desc']) and isset($_POST['j_sala
 <html>
 <head>
 <meta charset="utf-8">
-<title>Edit Job Posting</title>
+<title>QUICKNOKRI | Edit Job</title>
+<link rel="shortcut icon" href="logoinv.ico"/>      
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> 
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">    
 <link type="text/css" href="Style.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet"> 
+<link type="text/css" href="all.css" rel="stylesheet">
 <style>
  .logo{
         font-family: 'Lobster', cursive;
